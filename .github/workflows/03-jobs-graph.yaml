@@ -1,0 +1,32 @@
+name: Jobs Graph
+
+on: 
+  workflow_dispatch:
+
+
+jobs:
+  job1:
+    runs-on: buntu-24.04
+
+    steps:
+      - run: echo "Step 1"
+      - run: echo "Step 2"
+  job2:
+    runs-on: ubuntu-24.04
+    steps:
+      - run: echo "Step 3"
+  job3:
+    runs-on: ubuntu-24.04
+    needs:
+      - job1
+      - job2
+    steps:
+      - run: echo "Step 4"
+  job4:
+    runs-on: ubuntu-24.04
+    needs:
+      - job2
+      - job3
+    steps:
+      - run: echo "Step 5"
+  
