@@ -1,0 +1,21 @@
+name: types of steps
+
+on:
+    workflow_dispatch:
+
+jobs:
+    say-hello-inline:
+        runs-on: ubuntu-24.04
+        steps:
+            - run: echo "Hello world from bash"
+    say-hello-python:
+        runs-on: ubuntu-24.04
+        steps:
+            - run: print("Hello world from python")
+              shell: python 
+    say-hello-from-action:
+        runs-on: ubuntu-24.04
+        steps:
+            - uses: actions/hello-world-javascript-action@e76147da8e5c81eaf017dede5645551d4b94427b
+              with:
+                who-to-greet: "world from javascript action"
