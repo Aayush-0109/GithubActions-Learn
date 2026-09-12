@@ -6,6 +6,8 @@ on:
 jobs:
     job-1:
         runs-on: ubuntu-24.04
+        outputs:
+            outputVar: ${{ steps.job1-step1.outputs.outputVar }}
         steps:
             - name: Set env variable
               id: job1-step1
@@ -23,4 +25,4 @@ jobs:
             - name: Print env variable
               run: |
                 echo "step1Var1= ${{ needs.job-1.outputs.outputVar }}"
-                echo "step1Var2= ${envVar:<unset>}"
+                echo "step1Var2= ${envVar:- <unset>}"
