@@ -1,0 +1,22 @@
+name: Types of event listners
+
+on:
+    push:
+        branches:
+            - "push*"
+    pull_request:
+        types:
+            - opened
+            - synchronize
+            - reopened
+        paths:
+            - "03-core-features/filters/*.md"
+            - "!03-core-features/filters/*.txt"
+    workflow_dispatch:
+
+jobs:
+    echo-event:
+        runs-on: ubuntu-24.04
+        steps:
+            - name: Dump full event JSON
+              run: cat "$GITHUB_EVENT_PATH"
