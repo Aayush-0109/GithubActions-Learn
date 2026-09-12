@@ -17,7 +17,7 @@ jobs:
                 echo "step1Var1= ${{ steps.job1-step1.outputs.outputVar }}"
                 echo "step1Var2=$envVar"
     job-2:
-        runs-on: buntu-24.04
+        runs-on: ubuntu-24.04
         needs: job-1
         steps:
             - name: Print env variable
