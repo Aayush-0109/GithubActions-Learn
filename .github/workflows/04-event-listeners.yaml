@@ -1,4 +1,4 @@
-name: Types of event listners
+name: 04 Types of event listners
 
 on:
     push:
@@ -12,6 +12,8 @@ on:
         paths:
             - "03-core-features/filters/*.md"
             - "!03-core-features/filters/*.txt"
+    # schedule:
+    #     - cron: "0 0 * * *"
     workflow_dispatch:
 
 jobs:

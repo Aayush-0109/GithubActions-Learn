@@ -1,0 +1,26 @@
+name: 05 Env variables passing
+
+on:
+    workflow_dispatch:
+
+jobs:
+    job-1:
+        runs-on: ubuntu-24.04
+        steps:
+            - name: Set env variable
+              id: job1-step1
+              run: |
+                echo "outputVar=job1-step1-value" >> $GITHUB_OUTPUTS
+                echo "envVar=job1-step1-value" >> $GITHUB_ENV
+            - name: Print env variable
+              run: |
+                echo "step1Var1= ${steps.job1-step1.outputs.outputVar}"
+                echo "step1Var2=$envVar"
+    job-2:
+        runs-on: buntu-24.04
+        needs: job-1
+        steps:
+            - name: Print env variable
+              run: |
+                echo "step1Var1= ${needs.job-1.outputs.outputVar}"
+                echo "step1Var2= ${envVar:<unset>}"
